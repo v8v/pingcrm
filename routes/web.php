@@ -9,6 +9,7 @@ use App\Http\Controllers\ReportsController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\LotteryController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,6 +20,21 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/test', [LotteryController::class, 'test'])
+    ->name('lottery.test');
+// lottery
+Route::get('/lottery', [LotteryController::class, 'index'])
+    ->name('lottery.index')
+    ->middleware('guest');
+
+Route::post('/search', [LotteryController::class, 'search'])
+    ->name('search')
+    ->middleware('guest');
+
+Route::get('/result', [LotteryController::class, 'result'])
+    ->name('lottery.result')
+    ->middleware('guest');    
 
 // Auth
 
